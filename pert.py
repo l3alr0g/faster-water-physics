@@ -59,7 +59,7 @@ class Circular(Pert):
 
         if math_in(r, [a, b]) and a < b:
             amp = (1 - r/(c*self.outer_lifespan))
-            return amp
+            return amp    
         elif math_in(r, [c*(t-self.duration-self.inner_lifespan),a], exclude=(a)):
             if (1 - r/(c*self.outer_lifespan)) >= 0: amp = (1 - r/(c*self.outer_lifespan))
             else: amp = 0
@@ -138,7 +138,7 @@ if __name__=='__main__': # testing
     from surface import Surface
     mesh = Surface("water", (400, 400), 'RGB', pix_dist = 0.03)
     new_pert = Circular('drop1', 5, 1, 1.5, mesh, 25, c = 2, A = 0.1, t_init = 0)
-    for i in range(0, 20):
+    for i in range(45, 50):
         data = new_pert.getData(mesh.res, Vec2(200, 200), i*0.1)
         format(data ,'output%ss'%i)
     
